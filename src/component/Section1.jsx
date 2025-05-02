@@ -1,5 +1,11 @@
 import React from 'react'
 import webDeveloper from '/images/webDeveloper.png';
+import gitHub from "/icons/github.png"
+import linkedIn from "/icons/linkedin.png"
+import gmail from "/icons/gmail.png"
+import insta from "/icons/instagram.png"
+import diaArrow from "/icons/diaganol_arrow.png"
+
 
 export default function Section1() {
     return (
@@ -14,21 +20,21 @@ export default function Section1() {
                         <p>I’m a MERN Stack developer proficient in MERN stack technologies. Building dynamic and user-friendly web applications.</p>
                         <div className="socialMediaLinks">
                             <a href="#">
-                                <img src="/icons/github.png" alt="" />
+                                <img src={gitHub} alt="" />
                             </a>
                             <a href="#">
-                                <img src="/icons/linkedin.png" alt="" />
+                                <img src={linkedIn} alt="" />
                             </a>
                             <a href="#">
-                                <img src="/icons/gmail.png" alt="" />
+                                <img src={gmail} alt="" />
                             </a>
                             <a href="#">
-                                <img src="/icons/instagram.png" alt="" />
+                                <img src={insta} alt="" />
                             </a>
                         </div>
                         <a href="#" className='resumeBtn'>
                             <span>View Resume</span>
-                            <img src="/icons/diaganol_arrow.png" alt="" />
+                            <img src={diaArrow} alt="" />
                         </a>
                     </div>
                     <div className="image-holder">

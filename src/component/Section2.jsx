@@ -1,4 +1,5 @@
 import React from 'react'
+import study from "/images/study.png"
 
 export default function Section2() {
     return (
@@ -6,7 +7,7 @@ export default function Section2() {
             <div className="container">
                 <div className="contentWrap">
                     <div className="image-holder">
-                        <img src="/images/study.png" alt="" />
+                        <img src={study} alt="" />
                     </div>
                     <div className="content">
                         <h2>

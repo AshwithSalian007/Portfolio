@@ -1,4 +1,9 @@
 import React, { useState } from 'react'
+import mail from "/icons/mail.png"
+import location from "/icons/location.png"
+import whiteArrow from "/icons/white_diagonal_arrow.png"
+
+
 
 export default function Section5() {
 
@@ -36,7 +41,7 @@ export default function Section5() {
                             </p>
 
                             <div className="infoContainer">
-                                <img src="/icons/mail.png" alt="" />
+                                <img src={mail} alt="" />
                                 <div>
                                     <h3>
                                         Mail
@@ -46,7 +51,7 @@ export default function Section5() {
                             </div>
 
                             <div className="infoContainer">
-                                <img src="/icons/location.png" alt="" />
+                                <img src={location} alt="" />
                                 <div>
                                     <h3>
                                         Location
@@ -61,7 +66,7 @@ export default function Section5() {
                             <input type="text" placeholder='Name' name='name' value={data.name || ''} onChange={handleOnchange}/>
                             <input type="text" placeholder='Email' name='email' value={data.email || ''} onChange={handleOnchange}/>
                             <textarea type='text' placeholder='Message' name='message' value={data.message || ''} onChange={handleOnchange}/>
-                            <button type='submit'>Submit <img src="/icons/white_diagonal_arrow.png" alt="" /></button>
+                            <button type='submit'>Submit <img src={whiteArrow} alt="" /></button>
                         </form>
                         
 
