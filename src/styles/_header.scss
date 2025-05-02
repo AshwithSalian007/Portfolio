@@ -1,0 +1,120 @@
+@use './variables' as *;
+
+.header {
+    background-color: $bg_primary;
+    position: relative;
+    z-index: 5;
+    
+    .headWrap {
+        min-height: 75px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        .navActive-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 100%;
+            background-color: #00000081;
+            z-index: 9;
+
+            &.active {
+                right: 0%;
+            }
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            height: 100svh;
+            right: 100%;
+            overflow: hidden;
+            transition: all 250ms ease-out;
+            background-color: $bg_primary;
+            z-index: 99;
+
+            &.active {
+                right: 25%;
+            }
+
+            .menuClose {
+                height: 55px;
+                display: flex;
+                justify-content: flex-end;
+                padding-right: 20px;
+                align-items: center;
+                border-bottom: 1px solid #ffffff22;
+                img {
+                    width: 24px;
+                }
+            }
+    
+    
+            ul {
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 30px;
+                height: 100%;
+                gap: 30px;
+                
+                li {
+                    list-style: none;
+                    height: 100;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 45px;
+    
+                    a {
+                        text-decoration: none;
+                        font-size: clamp(16px, 3.33vw, 20px);
+                        color: $color_white;
+                        padding: 8px 15px;
+                        font-weight: 400;
+
+                        &:hover {
+                            color: $primary_color;
+                        }
+                    }
+                }
+            }
+        }
+    
+        .menuIcon-holder {
+            cursor: pointer;
+            img {
+                width: 48px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .navActive-bg {
+                display: none;
+            }
+            nav {
+                position: static;
+                height: auto;
+
+                .menuClose {
+                    display: none;
+                }
+
+                ul {
+                    flex-direction: row;
+                    padding-top: 0;
+                }
+            }
+            .menuIcon-holder {
+                display: none;
+            }
+        }
+    }
+
+}
