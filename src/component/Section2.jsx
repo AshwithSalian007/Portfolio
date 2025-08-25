@@ -1,9 +1,9 @@
 import React from 'react'
-import study from "/images/study.png"
+import study from "/images/study.svg"
 
 export default function Section2() {
     return (
-        <section className="home_section2">
+        <section className="home_section2" id='section2'>
             <div className="container">
                 <div className="contentWrap">
                     <div className="image-holder">

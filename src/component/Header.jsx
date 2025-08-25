@@ -14,11 +14,11 @@ export default function Header() {
                             <img src={closeIcon} alt="" />
                         </div>
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About</a></li>
+                            <li><a href="#section1">Home</a></li>
+                            <li><a href="#section2">About</a></li>
                             <li><a href="#">Skills</a></li>
-                            <li><a href="#">Work</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="#section4">Work</a></li>
+                            <li><a href="#section5">Contact</a></li>
                         </ul>
                     </nav>
                     <div className='menuIcon-holder' onClick={() => setIsMenuActive(true)}>

@@ -4,6 +4,8 @@
     background-color: $bg_primary;
     position: relative;
     z-index: 5;
+    position: sticky;
+    top: 0;
     
     .headWrap {
         min-height: 75px;

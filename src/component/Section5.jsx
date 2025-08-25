@@ -28,7 +28,7 @@ export default function Section5() {
         console.log('form-date: ', data);
     }
     return (
-        <section className='home_section5'>
+        <section className='home_section5' id='section5'>
             <div className="container">
                 <div className="contentWrap">
                     <h2>
