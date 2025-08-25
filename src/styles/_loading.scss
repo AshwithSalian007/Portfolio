@@ -1,0 +1,257 @@
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+            radial-gradient(circle at 20% 50%, rgba(0, 102, 255, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(0, 255, 204, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 40% 80%, rgba(255, 0, 150, 0.1) 0%, transparent 50%);
+        animation: backgroundShift 8s ease-in-out infinite;
+    }
+
+    .loading-container {
+        position: relative;
+        z-index: 2;
+        max-width: 600px;
+        width: 90%;
+    }
+
+    .terminal-window {
+        background: rgba(0, 0, 0, 0.9);
+        border-radius: 12px;
+        border: 1px solid rgba(0, 102, 255, 0.3);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        backdrop-filter: blur(10px);
+    }
+
+    .terminal-header {
+        background: linear-gradient(90deg, #2a2a2a 0%, #1a1a1a 100%);
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(0, 102, 255, 0.2);
+
+        .terminal-controls {
+            display: flex;
+            gap: 8px;
+
+            .control {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                
+                &.close { background: #ff5f57; }
+                &.minimize { background: #ffbd2e; }
+                &.maximize { background: #28ca42; }
+            }
+        }
+
+        .terminal-title {
+            color: #0066ff;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    }
+
+    .terminal-content {
+        padding: 30px;
+        color: #00ff00;
+        font-family: 'Courier New', monospace;
+        min-height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .ascii-art {
+        margin-bottom: 30px;
+        
+        pre {
+            color: #0066ff;
+            font-size: 12px;
+            line-height: 1.2;
+            text-align: center;
+            margin: 0;
+            text-shadow: 0 0 10px rgba(0, 102, 255, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+    }
+
+    .loading-text {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        font-size: 18px;
+        min-height: 25px;
+
+        .prompt {
+            color: #0066ff;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .text {
+            color: #00ff00;
+            min-width: 200px;
+        }
+
+        .cursor {
+            color: #00ff00;
+            animation: blink 1s step-start infinite;
+            
+            &.visible {
+                opacity: 1;
+            }
+        }
+    }
+
+    .progress-container {
+        width: 100%;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: rgba(0, 102, 255, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(0, 255, 204, 0.3), transparent);
+                animation: shimmer 2s infinite;
+            }
+
+            .progress-fill {
+                height: 100%;
+                background: linear-gradient(90deg, #0066ff 0%, #00ffcc 50%, #0066ff 100%);
+                border-radius: 4px;
+                transition: width 0.3s ease;
+                position: relative;
+                overflow: hidden;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+                    animation: progressShine 1.5s infinite;
+                }
+            }
+        }
+
+        .progress-text {
+            color: #0066ff;
+            font-size: 16px;
+            font-weight: bold;
+            min-width: 45px;
+            text-align: right;
+        }
+    }
+
+    .loading-dots {
+        display: flex;
+        gap: 8px;
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: #00ff00;
+            border-radius: 50%;
+            animation: dotBounce 1.4s ease-in-out infinite both;
+
+            &:nth-child(1) { animation-delay: -0.32s; }
+            &:nth-child(2) { animation-delay: -0.16s; }
+            &:nth-child(3) { animation-delay: 0s; }
+        }
+    }
+}
+
+@keyframes backgroundShift {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px rgba(0, 102, 255, 0.5); }
+    to { text-shadow: 0 0 20px rgba(0, 102, 255, 0.8), 0 0 30px rgba(0, 102, 255, 0.6); }
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes progressShine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes dotBounce {
+    0%, 80%, 100% {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .loading-screen {
+        .terminal-content {
+            padding: 20px;
+            min-height: 250px;
+        }
+
+        .ascii-art pre {
+            font-size: 10px;
+        }
+
+        .loading-text {
+            font-size: 16px;
+            
+            .text {
+                min-width: 150px;
+            }
+        }
+    }
+}

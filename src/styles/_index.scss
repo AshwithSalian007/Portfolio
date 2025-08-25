@@ -1,18 +1,38 @@
 @use './variables' as *;
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 html {
     scroll-behavior: smooth;
 }
+
 body {
     font-family: "Roboto", sans-serif;
-    background-color: $bg_secondary;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
     color: $color_white;
+    overflow-x: hidden;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+        background: 
+            radial-gradient(circle at 25% 25%, rgba(0, 102, 255, 0.05) 0%, transparent 50%),
+            radial-gradient(circle at 75% 75%, rgba(0, 255, 204, 0.05) 0%, transparent 50%);
+        animation: backgroundPulse 8s ease-in-out infinite;
+    }
 }
 
 img {
@@ -22,4 +42,262 @@ img {
 p, h1, h2, h3, h4, h5, h6 {
     margin: 0;
     padding: 0;
+}
+
+// Developer-themed font for code snippets and terminal elements
+.code-font {
+    font-family: 'Fira Code', 'Courier New', monospace;
+}
+
+// Main content transitions
+.main-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+
+    &.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    &.hidden {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+// Glitch effect for headings
+@keyframes glitch {
+    0% {
+        text-shadow: 0.05em 0 0 #00ffcc, -0.05em -0.025em 0 #0066ff,
+                     0.025em 0.05em 0 #ff0066;
+    }
+    15% {
+        text-shadow: 0.05em 0 0 #00ffcc, -0.05em -0.025em 0 #0066ff,
+                     0.025em 0.05em 0 #ff0066;
+    }
+    16% {
+        text-shadow: -0.05em -0.025em 0 #00ffcc, 0.025em 0.025em 0 #0066ff,
+                     -0.05em -0.05em 0 #ff0066;
+    }
+    49% {
+        text-shadow: -0.05em -0.025em 0 #00ffcc, 0.025em 0.025em 0 #0066ff,
+                     -0.05em -0.05em 0 #ff0066;
+    }
+    50% {
+        text-shadow: 0.025em 0.05em 0 #00ffcc, 0.05em 0 0 #0066ff,
+                     0 -0.05em 0 #ff0066;
+    }
+    99% {
+        text-shadow: 0.025em 0.05em 0 #00ffcc, 0.05em 0 0 #0066ff,
+                     0 -0.05em 0 #ff0066;
+    }
+    100% {
+        text-shadow: -0.025em 0 0 #00ffcc, -0.025em -0.025em 0 #0066ff,
+                     -0.025em -0.05em 0 #ff0066;
+    }
+}
+
+.glitch-effect {
+    animation: glitch 0.5s linear infinite;
+}
+
+// Typing animation
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #0066ff; }
+}
+
+.typing-animation {
+    overflow: hidden;
+    border-right: 2px solid #0066ff;
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+// Floating elements animation
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px);
+    }
+    50% { 
+        transform: translateY(-10px);
+    }
+}
+
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+// Pulse animation for interactive elements
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 102, 255, 0.7);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(0, 102, 255, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 102, 255, 0);
+    }
+}
+
+.pulse-animation {
+    animation: pulse 2s infinite;
+}
+
+// Matrix rain effect for background
+@keyframes matrix-rain {
+    0% {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+// Background pulse animation
+@keyframes backgroundPulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+// Scrollbar styling
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #0066ff, #00ffcc);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #0080ff, #00ffdd);
+}
+
+// Selection styling
+::selection {
+    background: rgba(0, 102, 255, 0.3);
+    color: #ffffff;
+}
+
+::-moz-selection {
+    background: rgba(0, 102, 255, 0.3);
+    color: #ffffff;
+}
+
+// Developer-themed hover effects
+.dev-hover {
+    position: relative;
+    transition: all 0.3s ease;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(0, 102, 255, 0.2), transparent);
+        transition: left 0.5s;
+    }
+
+    &:hover::before {
+        left: 100%;
+    }
+}
+
+// Fade in animation for sections
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Button animations
+button, .btn {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.3s, height 0.3s;
+    }
+
+    &:hover::before {
+        width: 300px;
+        height: 300px;
+    }
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 102, 255, 0.3);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+// Focus styles for accessibility
+*:focus-visible {
+    outline: 2px solid #0066ff;
+    outline-offset: 2px;
+}
+
+// Responsive utilities
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
