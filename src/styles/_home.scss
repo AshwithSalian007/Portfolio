@@ -472,6 +472,7 @@
                     border: 1px solid rgba(0, 102, 255, 0.3);
                     border-radius: 12px;
                     transition: all 0.3s ease;
+                    min-width: 0;
 
                     &:hover {
                         transform: translateY(-5px);
@@ -484,6 +485,9 @@
                         font-weight: 700;
                         color: $primary_color;
                         margin-bottom: 8px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
                     }
 
                     .stat-label {
@@ -491,6 +495,9 @@
                         color: $light_text_color;
                         text-transform: uppercase;
                         letter-spacing: 1px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
                     }
                 }
             }
@@ -515,6 +522,8 @@
                     display: flex;
                     flex-wrap: wrap;
                     gap: 12px;
+                    width: 100%;
+                    justify-content: flex-start;
 
                     .tech-badge {
                         padding: 8px 16px;
@@ -525,6 +534,8 @@
                         font-size: 14px;
                         font-weight: 500;
                         transition: all 0.3s ease;
+                        white-space: nowrap;
+                        flex-shrink: 0;
 
                         &:hover {
                             transform: translateY(-3px);
@@ -552,6 +563,38 @@
 						p{
 							font-size: 19px;
 						}
+
+						.stats-container {
+							gap: 20px;
+
+							.stat-item {
+								padding: 15px;
+
+								.stat-number {
+									font-size: 30px;
+								}
+
+								.stat-label {
+									font-size: 13px;
+								}
+							}
+						}
+
+						.tech-stack {
+							.tech-icons {
+								gap: 8px;
+								display: flex;
+								flex-wrap: wrap;
+								justify-content: flex-start;
+
+								.tech-badge {
+									padding: 6px 12px;
+									font-size: 13px;
+									white-space: nowrap;
+									flex-shrink: 0;
+								}
+							}
+						}
 					}
 				}
     }
@@ -573,6 +616,46 @@
 	
 					p{
 						font-size: 18px;
+					}
+
+					.stats-container {
+						gap: 15px;
+						grid-template-columns: repeat(3, 1fr);
+
+						.stat-item {
+							padding: 12px 8px;
+
+							.stat-number {
+								font-size: 24px;
+							}
+
+							.stat-label {
+								font-size: 11px;
+								letter-spacing: 0.5px;
+							}
+						}
+					}
+
+					.tech-stack {
+						h3 {
+							font-size: 18px;
+						}
+
+						.tech-icons {
+							gap: 6px;
+							display: flex;
+							flex-wrap: wrap;
+							justify-content: flex-start;
+							width: 100%;
+
+							.tech-badge {
+								padding: 5px 10px;
+								font-size: 11px;
+								white-space: nowrap;
+								flex-shrink: 0;
+								border-radius: 12px;
+							}
+						}
 					}
 				}
 
@@ -600,10 +683,123 @@
 					p{
 						font-size: 16px;
 					}
+
+					.stats-container {
+						gap: 12px;
+						margin: 20px 0;
+
+						.stat-item {
+							padding: 10px 6px;
+
+							.stat-number {
+								font-size: 20px;
+							}
+
+							.stat-label {
+								font-size: 10px;
+								letter-spacing: 0;
+							}
+						}
+					}
+
+					.tech-stack {
+						h3 {
+							font-size: 16px;
+							margin-bottom: 12px;
+						}
+
+						.tech-icons {
+							gap: 5px;
+							display: flex;
+							flex-wrap: wrap;
+							justify-content: flex-start;
+							width: 100%;
+
+							.tech-badge {
+								padding: 4px 8px;
+								font-size: 10px;
+								white-space: nowrap;
+								flex-shrink: 0;
+								border-radius: 10px;
+								min-width: fit-content;
+							}
+						}
+					}
 				}
 
 				.image-holder{
 					max-width: 250px;
+				}
+			}
+		}
+
+		// Extra small mobile devices
+		@media (max-width: 479.98px){
+			padding: 30px 5px;
+
+			.contentWrap{
+				gap: 15px;
+
+				.content{
+					gap: 20px;
+
+					h2{
+						font-size: 30px;
+					}
+
+					p{
+						font-size: 15px;
+					}
+
+					.stats-container {
+						gap: 8px;
+						margin: 15px 0;
+						grid-template-columns: repeat(3, 1fr);
+
+						.stat-item {
+							padding: 8px 4px;
+							border-radius: 8px;
+
+							.stat-number {
+								font-size: 18px;
+							}
+
+							.stat-label {
+								font-size: 9px;
+								letter-spacing: 0;
+							}
+						}
+					}
+
+					.tech-stack {
+						h3 {
+							font-size: 15px;
+							margin-bottom: 10px;
+						}
+
+						.tech-icons {
+							gap: 4px;
+							display: flex;
+							flex-wrap: wrap;
+							justify-content: flex-start;
+							width: 100%;
+
+							.tech-badge {
+								padding: 4px 8px;
+								font-size: 9px;
+								border-radius: 8px;
+								white-space: nowrap;
+								flex-shrink: 0;
+								min-width: fit-content;
+								text-align: center;
+							}
+						}
+					}
+				}
+
+				.image-holder{
+					max-width: 200px;
+					align-self: center;
 				}
 			}
 		}		
